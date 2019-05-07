@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<robot name="ryan_dpr_neck" xmlns:xacro="http://ros.org/wiki/xacro">
+ <!-- <link name="link1"/>-->
+  <link name="link2"/>
+  <link name="link3"/>
+  <link name="link4"/>
+  <link name="link5"/>
+  <link name="link6"/>
+<!--
+  <joint name="yaw" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <limit effort="1000.0" velocity="1.00" lower="-1.048" upper="1.048"/>
+  </joint>
+-->
+  <joint name="pitch_lower" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <limit effort="1000.0" velocity="1.00" lower="-0.261" upper="0.261"/>
+  </joint>
+
+  <joint name="roll_lower" type="revolute">
+    <parent link="link3"/>
+    <child link="link4"/>
+    <limit effort="1000.0" velocity="1.00" lower="-0.174" upper="0.174"/>
+  </joint>
+
+  <joint name="pitch_upper" type="revolute">
+    <parent link="link4"/>
+    <child link="link5"/>
+    <limit effort="1000.0" velocity="1.00" lower="-0.281" upper="0.281"/>
+  </joint>
+
+  <joint name="roll_upper" type="revolute">
+    <parent link="link5"/>
+    <child link="link6"/>
+    <limit effort="1000.0" velocity="1.00" lower="-0.261" upper="0.261"/>
+  </joint>
+</robot>

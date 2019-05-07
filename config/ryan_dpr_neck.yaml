@@ -1,0 +1,79 @@
+dynamixel_controllers:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 10
+
+  # Allows to send single ROS msg of Float64MultiArray to all joints
+  pos_controller:
+    type: position_controllers/JointGroupPositionController
+    joints:
+     # - yaw
+     # - pitch_lower
+     # - roll_lower
+     # - pitch_upper
+      - roll_upper
+
+  # Joint Trajectory Controller -------------------------------
+  # For detailed explanations of parameter see http://wiki.ros.org/joint_trajectory_controller
+  position_trajectory_controller:
+     type: position_controllers/JointTrajectoryController
+     # These joints can likely just be copied from the hardware_interface list above
+     joints:
+     # - yaw
+     # - pitch_lower
+     # - roll_lower
+     # - pitch_upper
+      - roll_upper
+
+ # yaw_position_controller:
+ #   type: position_controllers/JointPositionController
+  #  joint: yaw
+
+dynamixel_control:
+  serial_interface: /dev/ttyUSB0
+  loop_frequency: 200
+  cycle_time_error_threshold: 0.1
+  baudrate: 1000000 # in bauds
+  read_timeout: 0.05 # in seconds
+  scan_timeout: 0.05 # in seconds
+
+  # Configuration of the servos
+  servos:
+ #   yaw:
+ #     id: 1
+ #     offset: 3.14159265359 # in rad
+ #     command_interface: position
+ #     margin: 1 # default 1
+ #     slope: 64 # default 32
+ #     #punch: 32 # default 32
+ #     # this actuator is set in reverse mode for the speed and position
+ #     #reverse: true
+ #   pitch_lower:
+ #     id: 22 #2
+ #     offset: 3.14159265359 # in rad
+ #     command_interface: position
+ #     #margin: 1 # default 1
+ #     #slope: 64 # default 32
+ #     #punch: 32 # default 32
+ #   roll_lower:
+ #     id: 23 #3
+ #     offset: 3.14159265359 # in rad
+ #     command_interface: position
+ #     #margin: 1 # default 1
+ #     #slope: 64 # default 32
+ #     #punch: 32 # default 32
+    pitch_upper:
+      id: 21 #4
+      offset: 3.14159265359 # in rad
+      command_interface: position
+      #margin: 1 # default 1
+      #slope: 32 # default 32
+      #punch: 32 # default 32
+ #   roll_upper:
+ #     id: 22 #5
+ #     offset: 3.14159265359 # in rad
+ #     command_interface: position
+ #     #margin: 1 # default 1
+ #     #slope: 32 # default 32
+ #     #punch: 32 # default 32
+  default_command_interface: position
